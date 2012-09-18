@@ -5,12 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Search Jobs-->
         <scene sceneID="uZp-bG-a0E">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDi-3h-ovd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="navController" definesPresentationContext="YES" id="AIB-Le-iFm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="ciT-YY-I4r"/>
+                    <tabBarItem key="tabBarItem" title="Search Jobs" image="15-tags.png" id="ciT-YY-I4r"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QSn-cf-1PT">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="1024" y="-118"/>
         </scene>
-        <!--View Controller - Search-->
+        <!--View Controller - Search Jobs-->
         <scene sceneID="a4L-r7-Ffb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUr-4n-x2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="cbg-Q5-jhs"/>
+                    <navigationItem key="navigationItem" title="Search Jobs" id="cbg-Q5-jhs"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1481" y="-118"/>
@@ -62,8 +62,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="18/09/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R2d-UQ-ONi">
-                                                    <rect key="frame" x="10" y="24" width="71" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Not Collected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R2d-UQ-ONi">
+                                                    <rect key="frame" x="10" y="24" width="87" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,8 +87,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="18/09/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bpx-Sk-UZ9">
-                                                    <rect key="frame" x="10" y="24" width="71" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Not Collected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bpx-Sk-UZ9">
+                                                    <rect key="frame" x="10" y="24" width="87" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -112,8 +112,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="18/09/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UiD-Wi-GAa">
-                                                    <rect key="frame" x="10" y="24" width="71" height="18"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Not Collected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UiD-Wi-GAa">
+                                                    <rect key="frame" x="10" y="24" width="87" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,12 +132,12 @@
             </objects>
             <point key="canvasLocation" x="1487" y="481"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - My Jobs-->
         <scene sceneID="lad-MQ-JgG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cpq-pr-aHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="wWO-uX-xeF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="fgG-Ef-yOU"/>
+                    <tabBarItem key="tabBarItem" title="My Jobs" image="195-barcode.png" id="fgG-Ef-yOU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sPy-AR-Sqk">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="1018" y="481"/>
         </scene>
-        <!--Table View Controller - Account-->
+        <!--Table View Controller - My Account-->
         <scene sceneID="Fqs-4M-XWr">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4e-d6-oWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,19 +189,41 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="LzR-vx-TjM">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="932-vX-nLr" style="IBUITableViewCellStyleDefault" id="L4G-wV-dMj">
+                                        <rect key="frame" x="0.0" y="200" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Sign Out Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="932-vX-nLr">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Account" id="fVS-yh-PSG"/>
+                    <navigationItem key="navigationItem" title="My Account" id="fVS-yh-PSG"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1487" y="1065"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - My Account-->
         <scene sceneID="V7N-lp-fOI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XTK-Zk-b9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="33i-6h-5OH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="9Hn-fD-Reg"/>
+                    <tabBarItem key="tabBarItem" title="My Account" image="111-user.png" id="9Hn-fD-Reg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PiJ-To-u6x">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -233,6 +255,11 @@
             <point key="canvasLocation" x="456" y="481"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="111-user.png" width="24" height="21"/>
+        <image name="15-tags.png" width="24" height="25"/>
+        <image name="195-barcode.png" width="24" height="18"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
