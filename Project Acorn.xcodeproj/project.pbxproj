@@ -20,7 +20,45 @@
 		1AC1E5D716091447004643C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1E5D616091447004643C4 /* main.m */; };
 		1AC1E5DB16091447004643C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1E5DA16091447004643C4 /* AppDelegate.m */; };
 		1AC1E5DE16091447004643C4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1E5DC16091447004643C4 /* MainStoryboard.storyboard */; };
+		A49A2B31160B6159009006BF /* JobsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B30160B6159009006BF /* JobsController.m */; };
+		A49A2B37160B756F009006BF /* JobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B36160B756F009006BF /* JobTableViewCell.m */; };
+		A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A83C66160C6AE500A47843 /* libZXingWidget.a */; };
+		A4A83C701610900800A47843 /* MyDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C6F1610900800A47843 /* MyDetailsController.m */; };
+		A4A83C731610A00500A47843 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C721610A00500A47843 /* LoginController.m */; };
+		A4DD11A11609BBB400DD436A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11A01609BBB400DD436A /* MapKit.framework */; };
+		A4DD11B11609BED500DD436A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11AF1609BED500DD436A /* AddressBook.framework */; };
+		A4DD11B21609BED500DD436A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B01609BED500DD436A /* AddressBookUI.framework */; };
+		A4DD11B41609BEDB00DD436A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B31609BEDB00DD436A /* AudioToolbox.framework */; };
+		A4DD11B61609BEE100DD436A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B51609BEE100DD436A /* AVFoundation.framework */; };
+		A4DD11B81609BEE600DD436A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B71609BEE600DD436A /* CoreMedia.framework */; };
+		A4DD11BA1609BEEB00DD436A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B91609BEEA00DD436A /* CoreVideo.framework */; };
+		A4DD11BC1609BEF400DD436A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11BB1609BEF400DD436A /* libiconv.dylib */; };
+		A4DD11C51609C60B00DD436A /* JobDetailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A4DD11C41609C60B00DD436A /* JobDetailController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A4A83C65160C6AE500A47843 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4A83C5D160C6AE400A47843 /* ZXingWidget.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = ZXingWidget;
+		};
+		A4A83C67160C6AE500A47843 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4A83C5D160C6AE400A47843 /* ZXingWidget.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D60398D13DF7CAD006F4B51;
+			remoteInfo = ZXingTests;
+		};
+		A4A83C6B160C6CFD00A47843 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4A83C5D160C6AE400A47843 /* ZXingWidget.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = ZXingWidget;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1A664E92160921FF00DAD755 /* 15-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15-tags.png"; sourceTree = "<group>"; };
@@ -40,6 +78,25 @@
 		1AC1E5D916091447004643C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AC1E5DA16091447004643C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1AC1E5DD16091447004643C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A49A2B2F160B6159009006BF /* JobsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsController.h; sourceTree = "<group>"; };
+		A49A2B30160B6159009006BF /* JobsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsController.m; sourceTree = "<group>"; };
+		A49A2B35160B756F009006BF /* JobTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobTableViewCell.h; sourceTree = "<group>"; };
+		A49A2B36160B756F009006BF /* JobTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobTableViewCell.m; sourceTree = "<group>"; };
+		A4A83C5D160C6AE400A47843 /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = "../../Downloads/zxing-2.0/iphone/ZXingWidget/ZXingWidget.xcodeproj"; sourceTree = "<group>"; };
+		A4A83C6E1610900800A47843 /* MyDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDetailsController.h; sourceTree = "<group>"; };
+		A4A83C6F1610900800A47843 /* MyDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailsController.m; sourceTree = "<group>"; };
+		A4A83C711610A00500A47843 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		A4A83C721610A00500A47843 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		A4DD11A01609BBB400DD436A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A4DD11AF1609BED500DD436A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		A4DD11B01609BED500DD436A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		A4DD11B31609BEDB00DD436A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A4DD11B51609BEE100DD436A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A4DD11B71609BEE600DD436A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A4DD11B91609BEEA00DD436A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		A4DD11BB1609BEF400DD436A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		A4DD11C31609C60B00DD436A /* JobDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailController.h; sourceTree = "<group>"; };
+		A4DD11C41609C60B00DD436A /* JobDetailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JobDetailController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +104,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */,
+				A4DD11BC1609BEF400DD436A /* libiconv.dylib in Frameworks */,
+				A4DD11BA1609BEEB00DD436A /* CoreVideo.framework in Frameworks */,
+				A4DD11B81609BEE600DD436A /* CoreMedia.framework in Frameworks */,
+				A4DD11B61609BEE100DD436A /* AVFoundation.framework in Frameworks */,
+				A4DD11B41609BEDB00DD436A /* AudioToolbox.framework in Frameworks */,
+				A4DD11B11609BED500DD436A /* AddressBook.framework in Frameworks */,
+				A4DD11B21609BED500DD436A /* AddressBookUI.framework in Frameworks */,
+				A4DD11A11609BBB400DD436A /* MapKit.framework in Frameworks */,
 				1AC1E5CB16091447004643C4 /* UIKit.framework in Frameworks */,
 				1AC1E5CD16091447004643C4 /* Foundation.framework in Frameworks */,
 				1AC1E5CF16091447004643C4 /* CoreGraphics.framework in Frameworks */,
@@ -59,9 +125,11 @@
 		1AC1E5BB16091447004643C4 = {
 			isa = PBXGroup;
 			children = (
+				A4DD11BD1609BFF900DD436A /* Libraries */,
 				1AC1E5D016091447004643C4 /* Project Acorn */,
 				1AC1E5C916091447004643C4 /* Frameworks */,
 				1AC1E5C716091447004643C4 /* Products */,
+				A4A83C5D160C6AE400A47843 /* ZXingWidget.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +144,13 @@
 		1AC1E5C916091447004643C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4DD11B91609BEEA00DD436A /* CoreVideo.framework */,
+				A4DD11B71609BEE600DD436A /* CoreMedia.framework */,
+				A4DD11B51609BEE100DD436A /* AVFoundation.framework */,
+				A4DD11B31609BEDB00DD436A /* AudioToolbox.framework */,
+				A4DD11AF1609BED500DD436A /* AddressBook.framework */,
+				A4DD11B01609BED500DD436A /* AddressBookUI.framework */,
+				A4DD11A01609BBB400DD436A /* MapKit.framework */,
 				1AC1E5CA16091447004643C4 /* UIKit.framework */,
 				1AC1E5CC16091447004643C4 /* Foundation.framework */,
 				1AC1E5CE16091447004643C4 /* CoreGraphics.framework */,
@@ -87,9 +162,19 @@
 			isa = PBXGroup;
 			children = (
 				1AC1E5F216091582004643C4 /* Resources */,
+				1AC1E5DC16091447004643C4 /* MainStoryboard.storyboard */,
 				1AC1E5D916091447004643C4 /* AppDelegate.h */,
 				1AC1E5DA16091447004643C4 /* AppDelegate.m */,
-				1AC1E5DC16091447004643C4 /* MainStoryboard.storyboard */,
+				A4A83C6E1610900800A47843 /* MyDetailsController.h */,
+				A4A83C6F1610900800A47843 /* MyDetailsController.m */,
+				A49A2B2F160B6159009006BF /* JobsController.h */,
+				A49A2B30160B6159009006BF /* JobsController.m */,
+				A49A2B35160B756F009006BF /* JobTableViewCell.h */,
+				A49A2B36160B756F009006BF /* JobTableViewCell.m */,
+				A4DD11C31609C60B00DD436A /* JobDetailController.h */,
+				A4DD11C41609C60B00DD436A /* JobDetailController.mm */,
+				A4A83C711610A00500A47843 /* LoginController.h */,
+				A4A83C721610A00500A47843 /* LoginController.m */,
 				1AC1E5D116091447004643C4 /* Supporting Files */,
 			);
 			path = "Project Acorn";
@@ -127,6 +212,23 @@
 			name = img;
 			sourceTree = "<group>";
 		};
+		A4A83C5E160C6AE400A47843 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4A83C66160C6AE500A47843 /* libZXingWidget.a */,
+				A4A83C68160C6AE500A47843 /* ZXingTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4DD11BD1609BFF900DD436A /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A4DD11BB1609BEF400DD436A /* libiconv.dylib */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +243,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A4A83C6C160C6CFD00A47843 /* PBXTargetDependency */,
 			);
 			name = "Project Acorn";
 			productName = "Project Acorn";
@@ -153,7 +256,7 @@
 		1AC1E5BD16091447004643C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "James Crowson";
 			};
 			buildConfigurationList = 1AC1E5C016091447004643C4 /* Build configuration list for PBXProject "Project Acorn" */;
@@ -166,12 +269,35 @@
 			mainGroup = 1AC1E5BB16091447004643C4;
 			productRefGroup = 1AC1E5C716091447004643C4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A4A83C5E160C6AE400A47843 /* Products */;
+					ProjectRef = A4A83C5D160C6AE400A47843 /* ZXingWidget.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1AC1E5C516091447004643C4 /* Project Acorn */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A4A83C66160C6AE500A47843 /* libZXingWidget.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libZXingWidget.a;
+			remoteRef = A4A83C65160C6AE500A47843 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A4A83C68160C6AE500A47843 /* ZXingTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ZXingTests.octest;
+			remoteRef = A4A83C67160C6AE500A47843 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1AC1E5C416091447004643C4 /* Resources */ = {
@@ -198,10 +324,23 @@
 			files = (
 				1AC1E5D716091447004643C4 /* main.m in Sources */,
 				1AC1E5DB16091447004643C4 /* AppDelegate.m in Sources */,
+				A4DD11C51609C60B00DD436A /* JobDetailController.mm in Sources */,
+				A49A2B31160B6159009006BF /* JobsController.m in Sources */,
+				A49A2B37160B756F009006BF /* JobTableViewCell.m in Sources */,
+				A4A83C701610900800A47843 /* MyDetailsController.m in Sources */,
+				A4A83C731610A00500A47843 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4A83C6C160C6CFD00A47843 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZXingWidget;
+			targetProxy = A4A83C6B160C6CFD00A47843 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1AC1E5D316091447004643C4 /* InfoPlist.strings */ = {
@@ -245,8 +384,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Users/jcrowson/Downloads/zxing-2.0/iphone/ZXingWidget/Classes/**",
+					"/Users/jcrowson/Downloads/zxing-2.0/cpp/core/src",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/jcrowson/Downloads/zxing/iphone/ZXingWidget/Classes/** /Users/jcrowson/Downloads/zxing/cpp/core/src";
 			};
 			name = Debug;
 		};
@@ -265,9 +409,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Users/jcrowson/Downloads/zxing-2.0/iphone/ZXingWidget/Classes/**",
+					"/Users/jcrowson/Downloads/zxing-2.0/cpp/core/src",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "/Users/jcrowson/Downloads/zxing/iphone/ZXingWidget/Classes/** /Users/jcrowson/Downloads/zxing/cpp/core/src";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
