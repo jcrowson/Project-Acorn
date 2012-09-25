@@ -6,9 +6,11 @@
 //  Copyright (c) 2012 James Crowson. All rights reserved.
 //
 
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 #import "JobDetailController.h"
 #import "QRCodeReader.h"
+#import "PackageLocation.h"
 
 @interface JobDetailController ()
 
@@ -17,26 +19,151 @@
 @implementation JobDetailController
 @synthesize deliverToText;
 @synthesize jobStatusLabel;
-@synthesize collectButton;
 @synthesize deliveryCodeLabel;
 @synthesize deliveryCodeTextField;
-@synthesize submitDeliveryCodeButton;
+@synthesize mapView;
 @synthesize qrCodeResult;
+@synthesize geocodeArray;
+@synthesize scanBarcodeButton;
+@synthesize lat;
+@synthesize lon;
+
 @synthesize jobStatus;
+@synthesize jobTitle;
+@synthesize collectionPostcode;
+@synthesize deliveryPostcode;
+@synthesize comment;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
+    //Hit the Google Maps API to Geocode the postcode into lat and long.
+    NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", self.collectionPostcode];
     
+    NSURL *googleURL = [NSURL URLWithString:googleMapsURLString];
+        
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL:googleURL];
+        [self performSelectorOnMainThread:@selector(fetchedData:) 
+                               withObject:data waitUntilDone:YES];
+    
+    });
+
+    [self.deliveryCodeTextField setDelegate:self];
+    [self.deliveryCodeTextField setReturnKeyType:UIReturnKeyDone];
+    [self.deliveryCodeTextField addTarget:self
+                       action:@selector(textFieldFinished:)
+             forControlEvents:UIControlEventEditingDidEndOnExit];
 
     /********************************************
      * Params passed from previous view via segue
      ********************************************/
         
     self.jobStatusLabel.text = [NSString stringWithFormat:@"Status: %@", self.jobStatus];
+    
+    //set navbar title to job number:
+    self.navigationItem.title = self.jobTitle;
+    
+    /********************************************
+     * If Not Collected
+     ********************************************/
+    
+    self.scanBarcodeButton.enabled = YES;
+    
+    self.deliverToText.text  = @"Collect from: Address here";
+    self.deliveryCodeLabel.hidden  = YES;
+    self.deliveryCodeTextField.hidden = YES;
+    
+    
+    /********************************************
+     * If Collected
+     ********************************************/
+    
+    if ([self.jobStatus isEqualToString:@"Collected"]) {
+        
+        self.jobStatusLabel.text = @"Status: Collected";
+        self.deliverToText.text = @"James Crowson SE1 7HF";
+        
+        //Hide the collect button when they've scanned the package and it's the correct one.
+        self.scanBarcodeButton.enabled = NO;
+        
+        //show the text field
+        self.deliveryCodeLabel.hidden = NO;
+        self.deliveryCodeTextField.hidden = NO;
 
+    }
+    
+    
+    /********************************************
+     * If Delivered
+     ********************************************/
+    
+    if ([self.jobStatus isEqualToString:@"Delivered"]) {
+        
+        self.jobStatusLabel.text = @"Status: Delivered";
+        self.deliverToText.text = @"Dropped off package at location";
+    
+        //Hide the collect button when they've scanned the package and it's the correct one.
+        self.scanBarcodeButton.enabled = NO;
+    
+        //show the text field
+        self.deliveryCodeLabel.hidden = YES;
+        self.deliveryCodeTextField.hidden = YES;
+    
+    }
 }
+
+- (IBAction)textFieldFinished:(id)sender
+{
+     [sender resignFirstResponder];
+}
+
+
+- (void)fetchedData:(NSData *)responseData {
+    
+    //parse out the json data
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization 
+                          JSONObjectWithData:responseData
+                          
+                          options:kNilOptions 
+                          error:&error];
+
+    self.geocodeArray = [json objectForKey:@"results"];
+    NSLog(@"geocode:%@", self.geocodeArray); 
+    
+    NSDictionary *geocode = [self.geocodeArray objectAtIndex:0];
+        
+    self.lon = [[[(NSDictionary*)[geocode objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng" ] doubleValue];
+    self.lat = [[[(NSDictionary*)[geocode objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat" ] doubleValue];
+    
+    NSLog(@"lat:%f lon: %f", self.lat, self.lon);
+    
+    /********************************************
+     * ZOOM TO LOCATION IN MAP
+     ********************************************/
+    
+    CLLocationCoordinate2D zoomLocation;
+    
+    zoomLocation.latitude = self.lat;
+    zoomLocation.longitude= self.lon;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];                
+    
+    [self.mapView setRegion:adjustedRegion animated:YES];
+
+    PackageLocation *package = [[PackageLocation alloc] initWithName:self.comment address:nil coordinate:zoomLocation];
+    
+    [self.mapView addAnnotation:package];
+    
+    [self.mapView selectAnnotation:package animated:YES];
+    
+}
+
 
 #pragma mark -
 #pragma mark Open QR Reader
@@ -67,7 +194,7 @@
          ********************************************/
         
         //Get job number (normall from the row in the UITableView)
-        NSString *jobNumber = @"12345";
+        NSString *jobNumber = self.jobTitle;
         
         //POST var to web service
         NSString *post = [NSString stringWithFormat:@"collectBarCodeID=%@&jobNumber=%@", result, jobNumber];
@@ -107,12 +234,11 @@
             self.deliverToText.text = @"James Crowson SE1 7HF";
             
             //Hide the collect button when they've scanned the package and it's the correct one.
-            self.collectButton.hidden = YES;
+            self.scanBarcodeButton.enabled = NO;
             
             //show the text field
             self.deliveryCodeLabel.hidden = NO;
             self.deliveryCodeTextField.hidden = NO;
-            self.submitDeliveryCodeButton.hidden = NO;
             
         }
         
@@ -133,17 +259,23 @@
     [self dismissModalViewControllerAnimated:NO];
 }
 
+
+-(void) zxingControllerDidCancel:(ZXingWidgetController*)controller {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
+
 #pragma mark -
 #pragma mark Send Delivery Code
-
-- (IBAction)sendDeliveryCodePressed:(id)sender {
+-(void) textFieldDidEndEditing:(UITextField *)textField {
     
     /********************************************
      * POST to webservice
      ********************************************/
     
     //Get job number (normall from the row in the UITableView)
-    NSString *jobNumber = @"12345";
+    NSString *jobNumber = self.jobTitle;
     
     //Get the delivery code from the users input
     NSString *deliverCode = self.deliveryCodeTextField.text;
@@ -186,12 +318,11 @@
         self.deliverToText.text = @"Dropped off package at location";
         
         //Hide the collect button when they've scanned the package and it's the correct one.
-        self.collectButton.hidden = YES;
+        self.scanBarcodeButton.enabled = YES;
         
         //show the text field
         self.deliveryCodeLabel.hidden = YES;
         self.deliveryCodeTextField.hidden = YES;
-        self.submitDeliveryCodeButton.hidden = YES;
         
     }
     
@@ -205,76 +336,17 @@
         [alert show];
         [alert release];
     }
-    
-}
 
-- (void)fetchedData:(NSData *)responseData {
-    //parse out the json data
-    NSError* error;
-    NSDictionary* json = [NSJSONSerialization 
-                          JSONObjectWithData:responseData //1
-                          
-                          options:kNilOptions 
-                          error:&error];
-    
-    NSArray* latestLoans = [json objectForKey:@"jobs"]; //2
-    
-    NSLog(@"jobs: %@", latestLoans); //3
-    
-    // 1) Get the latest loan
-    NSDictionary* loan = [latestLoans objectAtIndex:0];
-    
-    // 2) Get the funded amount and loan amount
-    self.jobStatus = [loan objectForKey:@"status"];
-    
-    //logic to control what stage the job is at depending on job status
-    
-    if ([self.jobStatus isEqualToString:@"Not Collected"]) {
-        
-        self.deliverToText.text = @"Collect package from: Mr James Crowson, SE1 7HF";
-        self.collectButton.hidden = NO;
-        self.deliveryCodeLabel.hidden = YES;
-        self.deliveryCodeTextField.hidden = YES;
-        self.submitDeliveryCodeButton.hidden = YES;
-    }
-    
-    else if ([self.jobStatus isEqualToString:@"Collected"]) {
-        
-        self.deliverToText.text = @"Deliver Package to:";
-        self.collectButton.hidden = YES;
-        self.deliveryCodeLabel.hidden = NO;
-        self.deliveryCodeTextField.hidden = NO;
-        self.submitDeliveryCodeButton.hidden = NO;
-
-    }
-    
-    else {
-        
-        self.deliverToText.text = @"Dropped off package at location";
-        //Hide the collect button when they've scanned the package and it's the correct one.
-        self.collectButton.hidden = YES;
-        //show the text field
-        self.deliveryCodeLabel.hidden = YES;
-        self.deliveryCodeTextField.hidden = YES;
-        self.submitDeliveryCodeButton.hidden = YES;
-        
-    }
-
-    
-}
-
-- (void)zxingControllerDidCancel:(ZXingWidgetController*)controller {
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
 {
     [self setDeliverToText:nil];
     [self setJobStatusLabel:nil];
-    [self setCollectButton:nil];
     [self setDeliveryCodeLabel:nil];
     [self setDeliveryCodeTextField:nil];
-    [self setSubmitDeliveryCodeButton:nil];
+    [self setMapView:nil];
+    [self setScanBarcodeButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

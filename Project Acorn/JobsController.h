@@ -13,9 +13,6 @@
     
 
 @property (nonatomic, strong) NSMutableArray *listOfJobs;
-@property (nonatomic, strong) NSMutableArray *listOfJobStatuses;
-@property (nonatomic, strong) NSMutableArray *listOfJobCosts;
-@property (nonatomic, strong) NSMutableArray *listOfJobPostcodes;
 
 
 @end

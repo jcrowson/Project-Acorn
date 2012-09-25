@@ -20,6 +20,7 @@
 		1AC1E5D716091447004643C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1E5D616091447004643C4 /* main.m */; };
 		1AC1E5DB16091447004643C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1E5DA16091447004643C4 /* AppDelegate.m */; };
 		1AC1E5DE16091447004643C4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1E5DC16091447004643C4 /* MainStoryboard.storyboard */; };
+		A46D64781611D92900A69C62 /* PackageLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A46D64771611D92900A69C62 /* PackageLocation.m */; };
 		A49A2B31160B6159009006BF /* JobsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B30160B6159009006BF /* JobsController.m */; };
 		A49A2B37160B756F009006BF /* JobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B36160B756F009006BF /* JobTableViewCell.m */; };
 		A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A83C66160C6AE500A47843 /* libZXingWidget.a */; };
@@ -78,6 +79,8 @@
 		1AC1E5D916091447004643C4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AC1E5DA16091447004643C4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1AC1E5DD16091447004643C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A46D64761611D92900A69C62 /* PackageLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PackageLocation.h; path = ../PackageLocation.h; sourceTree = "<group>"; };
+		A46D64771611D92900A69C62 /* PackageLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PackageLocation.m; path = ../PackageLocation.m; sourceTree = "<group>"; };
 		A49A2B2F160B6159009006BF /* JobsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsController.h; sourceTree = "<group>"; };
 		A49A2B30160B6159009006BF /* JobsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsController.m; sourceTree = "<group>"; };
 		A49A2B35160B756F009006BF /* JobTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobTableViewCell.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				A4DD11C41609C60B00DD436A /* JobDetailController.mm */,
 				A4A83C711610A00500A47843 /* LoginController.h */,
 				A4A83C721610A00500A47843 /* LoginController.m */,
+				A46D64761611D92900A69C62 /* PackageLocation.h */,
+				A46D64771611D92900A69C62 /* PackageLocation.m */,
 				1AC1E5D116091447004643C4 /* Supporting Files */,
 			);
 			path = "Project Acorn";
@@ -329,6 +334,7 @@
 				A49A2B37160B756F009006BF /* JobTableViewCell.m in Sources */,
 				A4A83C701610900800A47843 /* MyDetailsController.m in Sources */,
 				A4A83C731610A00500A47843 /* LoginController.m in Sources */,
+				A46D64781611D92900A69C62 /* PackageLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

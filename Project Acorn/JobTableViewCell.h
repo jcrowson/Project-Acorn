@@ -14,5 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *statusLabel;
 @property (nonatomic, strong) IBOutlet UILabel *postcodeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *costLabel;
+@property (nonatomic, strong) IBOutlet UILabel *deliverPostcodeLabel;
 
 @end

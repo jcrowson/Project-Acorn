@@ -8,19 +8,38 @@
 
 #import <UIKit/UIKit.h>
 #import "ZXingWidgetController.h"
+#import <MapKit/MapKit.h>
 
-@interface JobDetailController : UIViewController <ZXingDelegate>
+#define METERS_PER_MILE 1609.344
+
+@interface JobDetailController : UIViewController <ZXingDelegate, UITextFieldDelegate> {
+    
+    BOOL doneInitialZoom;
+    UITextField *deliveryCodeTextField;
+    
+}
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, copy) NSString *qrCodeResult;
 @property (nonatomic, strong) IBOutlet UITextView *deliverToText;
 @property (strong, nonatomic) IBOutlet UILabel *jobStatusLabel;
-@property (strong, nonatomic) IBOutlet UIButton *collectButton;
 @property (strong, nonatomic) IBOutlet UILabel *deliveryCodeLabel;
 @property (strong, nonatomic) IBOutlet UITextField *deliveryCodeTextField;
-@property (strong, nonatomic) IBOutlet UIButton *submitDeliveryCodeButton;
+@property (strong, nonatomic) NSArray *geocodeArray;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *scanBarcodeButton;
+
+@property  double lat;
+@property  double lon;
+
+//Params to map to values from previous view
 @property (strong, nonatomic) NSString *jobStatus;
+@property (strong, nonatomic) NSString *jobTitle;
+@property (strong, nonatomic) NSString *collectionPostcode;
+@property (strong, nonatomic) NSString *deliveryPostcode;
+@property (strong, nonatomic) NSString *comment;
+
 
 - (IBAction)collectPressed:(id)sender;
-- (IBAction)sendDeliveryCodePressed:(id)sender;
 
 @end

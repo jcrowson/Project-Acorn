@@ -14,6 +14,7 @@
 @synthesize statusLabel;
 @synthesize costLabel;
 @synthesize postcodeLabel;
+@synthesize deliverPostcodeLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

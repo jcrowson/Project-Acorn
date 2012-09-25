@@ -31,7 +31,7 @@ if(empty($_POST['collectBarCodeID']))
 	  //Generate random 5 digit string for delivery QR Code
 	$deliverBarCodeIDRandomString = rand_string( 5 );
 
-	mysql_query("UPDATE jobs SET status ='COLLECTED', deliverBarCodeID ='{$deliverBarCodeIDRandomString}' WHERE jobNumber='$jobNumber'") or die(mysql_error());
+	mysql_query("UPDATE jobs SET status ='Collected', deliverBarCodeID ='{$deliverBarCodeIDRandomString}' WHERE jobNumber='$jobNumber'") or die(mysql_error());
 
 	/********************************************
 	  * Email recipient QR code and 5 digit delivery code.

@@ -5,6 +5,7 @@
 //  Created by James Crowson on 20/09/2012.
 //  Copyright (c) 2012 James Crowson. All rights reserved.
 //
+
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 #define kLatestKivaLoansURL [NSURL URLWithString: @"http://listogra.ph/jobs.php"]
 
@@ -16,23 +17,26 @@
 @end
 
 @implementation JobsController
+
 @synthesize listOfJobs;
-@synthesize listOfJobCosts;
-@synthesize listOfJobStatuses;
-@synthesize listOfJobPostcodes;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+        
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    
     dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: 
                         kLatestKivaLoansURL];
         [self performSelectorOnMainThread:@selector(fetchedData:) 
                                withObject:data waitUntilDone:YES];
     });
-    
+
 }
 
 
@@ -50,9 +54,6 @@
        
     int allJobsCount = [self.listOfJobs count];
     NSLog(@"number of jobs = %i", allJobsCount);
-    
-    NSDictionary *loan = [self.listOfJobs objectAtIndex:0];
-    NSLog(@"job at 0 %@", loan);
 
     [self.tableView reloadData];
 
@@ -90,9 +91,10 @@
     // Configure the cell...
     NSDictionary *aJob = [self.listOfJobs objectAtIndex:[indexPath row]];
     cell.jobNumberLabel.text = [aJob objectForKey:@"jobNumber"];
-    cell.postcodeLabel.text = [aJob objectForKey:@"recipientPostCode"];
+    cell.postcodeLabel.text = [aJob objectForKey:@"collectionPostcode"];
     cell.costLabel.text = [aJob objectForKey:@"price"]; 
     cell.statusLabel.text = [aJob objectForKey:@"status"]; 
+    cell.deliverPostcodeLabel.text = [aJob objectForKey:@"recipientPostCode"];
 
     return cell;   
     
@@ -111,9 +113,11 @@
         
         //Get the variable 
         destViewController.jobStatus = [aJob objectForKey:@"status"];
-        
-        NSLog(@"Passing data via the showJobDetail segue:%@",[aJob objectForKey:@"status"] );
-        
+        destViewController.jobTitle = [aJob objectForKey:@"jobNumber"];
+        destViewController.collectionPostcode = [aJob objectForKey:@"collectionPostcode"]; 
+        destViewController.deliveryPostcode = [aJob objectForKey:@"recipientPostCode"];
+        destViewController.comment = [aJob objectForKey:@"comments"];
+                
     }
 }
 
