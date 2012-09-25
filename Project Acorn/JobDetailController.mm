@@ -28,29 +28,27 @@
 @synthesize lat;
 @synthesize lon;
 
-@synthesize jobStatus;
 @synthesize jobTitle;
+@synthesize jobStatus;
+@synthesize price;
+@synthesize collectionAddressLine1;
+@synthesize collectionAddressLine2;
 @synthesize collectionPostcode;
+@synthesize collectionCity;
+
+@synthesize deliveryAddressLine1;
+@synthesize deliveryAddressLine2;
 @synthesize deliveryPostcode;
+@synthesize deliveryCity;
+@synthesize recipientFirstName;
+@synthesize recipientLastName;
 @synthesize comment;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-    //Hit the Google Maps API to Geocode the postcode into lat and long.
-    NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", self.collectionPostcode];
     
-    NSURL *googleURL = [NSURL URLWithString:googleMapsURLString];
-        
-    dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL:googleURL];
-        [self performSelectorOnMainThread:@selector(fetchedData:) 
-                               withObject:data waitUntilDone:YES];
-    
-    });
-
     [self.deliveryCodeTextField setDelegate:self];
     [self.deliveryCodeTextField setReturnKeyType:UIReturnKeyDone];
     [self.deliveryCodeTextField addTarget:self
@@ -70,22 +68,53 @@
      * If Not Collected
      ********************************************/
     
-    self.scanBarcodeButton.enabled = YES;
+    if ([self.jobStatus isEqualToString:@"Not Collected"]) {
+        
+        //Hit the Google Maps API to Geocode the postcode into lat and long.
+        NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", self.collectionPostcode];
+        
+        NSURL *googleURL = [NSURL URLWithString:googleMapsURLString];
+        
+        dispatch_async(kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL:googleURL];
+            [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                   withObject:data waitUntilDone:YES];
+            
+        });
+        
+        self.scanBarcodeButton.enabled = YES;
+        
+        self.deliverToText.text  = [NSString stringWithFormat:@"Collection Address: \n %@ \n %@ \n %@ \n %@", self.collectionAddressLine1, self.collectionAddressLine2, self.collectionCity, self.collectionPostcode];
+        
+        self.deliveryCodeLabel.hidden  = YES;
+        self.deliveryCodeTextField.hidden = YES;
+
+    }
     
-    self.deliverToText.text  = @"Collect from: Address here";
-    self.deliveryCodeLabel.hidden  = YES;
-    self.deliveryCodeTextField.hidden = YES;
-    
-    
+        
     /********************************************
      * If Collected
      ********************************************/
     
-    if ([self.jobStatus isEqualToString:@"Collected"]) {
+    else if ([self.jobStatus isEqualToString:@"Collected"]) {
         
-        self.jobStatusLabel.text = @"Status: Collected";
-        self.deliverToText.text = @"James Crowson SE1 7HF";
+        //Hit the Google Maps API to Geocode the postcode into lat and long.
+        NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", self.deliveryPostcode];
         
+        NSURL *googleURL = [NSURL URLWithString:googleMapsURLString];
+        
+        dispatch_async(kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL:googleURL];
+            [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                   withObject:data waitUntilDone:YES];
+            
+        });
+
+        
+        self.jobStatusLabel.text = [NSString stringWithFormat:@"Status: %@", self.jobStatus];
+        
+        self.deliverToText.text  = [NSString stringWithFormat:@"Delivery Address: \n %@ \n %@ \n %@ \n %@", self.deliveryAddressLine1, self.deliveryAddressLine2, self.deliveryCity, self.deliveryPostcode];
+
         //Hide the collect button when they've scanned the package and it's the correct one.
         self.scanBarcodeButton.enabled = NO;
         
@@ -100,10 +129,22 @@
      * If Delivered
      ********************************************/
     
-    if ([self.jobStatus isEqualToString:@"Delivered"]) {
+    else if ([self.jobStatus isEqualToString:@"Delivered"]) {
+        
+        //Hit the Google Maps API to Geocode the postcode into lat and long.
+        NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", self.deliveryPostcode];
+        
+        NSURL *googleURL = [NSURL URLWithString:googleMapsURLString];
+        
+        dispatch_async(kBgQueue, ^{
+            NSData* data = [NSData dataWithContentsOfURL:googleURL];
+            [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                   withObject:data waitUntilDone:YES];
+            
+        });
         
         self.jobStatusLabel.text = @"Status: Delivered";
-        self.deliverToText.text = @"Dropped off package at location";
+        self.deliverToText.text = @"Job Complete! Congratulations!";
     
         //Hide the collect button when they've scanned the package and it's the correct one.
         self.scanBarcodeButton.enabled = NO;
@@ -230,8 +271,9 @@
             [alert show];
             [alert release];
             
-            self.jobStatusLabel.text = @"Collected";
-            self.deliverToText.text = @"James Crowson SE1 7HF";
+            self.jobStatusLabel.text = [NSString stringWithFormat:@"Status: Collected "];
+            
+            self.deliverToText.text  = [NSString stringWithFormat:@"Collection Address: \n %@ \n %@ \n %@ \n %@", self.deliveryAddressLine1, self.deliveryAddressLine2, self.deliveryCity, self.deliveryPostcode];
             
             //Hide the collect button when they've scanned the package and it's the correct one.
             self.scanBarcodeButton.enabled = NO;
@@ -239,6 +281,19 @@
             //show the text field
             self.deliveryCodeLabel.hidden = NO;
             self.deliveryCodeTextField.hidden = NO;
+            
+            //Hit the Google Maps API to Geocode the postcode into lat and long.
+            NSString *googleMapsURLString = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", self.deliveryPostcode];
+            
+            NSURL *googleURL = [NSURL URLWithString:googleMapsURLString];
+            
+            dispatch_async(kBgQueue, ^{
+                NSData* data = [NSData dataWithContentsOfURL:googleURL];
+                [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                       withObject:data waitUntilDone:YES];
+                
+            });
+
             
         }
         

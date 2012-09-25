@@ -32,11 +32,21 @@
 @property  double lat;
 @property  double lon;
 
+
 //Params to map to values from previous view
-@property (strong, nonatomic) NSString *jobStatus;
 @property (strong, nonatomic) NSString *jobTitle;
+@property (strong, nonatomic) NSString *jobStatus;
+@property (strong, nonatomic) NSString *price;
+@property (strong, nonatomic) NSString *collectionAddressLine1;
+@property (strong, nonatomic) NSString *collectionAddressLine2;
 @property (strong, nonatomic) NSString *collectionPostcode;
+@property (strong, nonatomic) NSString *collectionCity;
+@property (strong, nonatomic) NSString *deliveryAddressLine1;
+@property (strong, nonatomic) NSString *deliveryAddressLine2;
+@property (strong, nonatomic) NSString *deliveryCity;
 @property (strong, nonatomic) NSString *deliveryPostcode;
+@property (strong, nonatomic) NSString *recipientFirstName;
+@property (strong, nonatomic) NSString *recipientLastName;
 @property (strong, nonatomic) NSString *comment;
 
 

@@ -94,7 +94,7 @@
     cell.postcodeLabel.text = [aJob objectForKey:@"collectionPostcode"];
     cell.costLabel.text = [aJob objectForKey:@"price"]; 
     cell.statusLabel.text = [aJob objectForKey:@"status"]; 
-    cell.deliverPostcodeLabel.text = [aJob objectForKey:@"recipientPostCode"];
+    cell.deliverPostcodeLabel.text = [aJob objectForKey:@"deliveryPostcode"];
 
     return cell;   
     
@@ -112,10 +112,22 @@
         NSDictionary *aJob = [self.listOfJobs objectAtIndex:[indexPath row]];
         
         //Get the variable 
-        destViewController.jobStatus = [aJob objectForKey:@"status"];
         destViewController.jobTitle = [aJob objectForKey:@"jobNumber"];
-        destViewController.collectionPostcode = [aJob objectForKey:@"collectionPostcode"]; 
-        destViewController.deliveryPostcode = [aJob objectForKey:@"recipientPostCode"];
+        destViewController.jobStatus = [aJob objectForKey:@"status"];
+        destViewController.price = [aJob objectForKey:@"price"];
+        
+        destViewController.collectionAddressLine1 = [aJob objectForKey:@"collectionAddressLine1"];
+        destViewController.collectionAddressLine2 = [aJob objectForKey:@"collectionAddressLine2"];
+        destViewController.collectionPostcode = [aJob objectForKey:@"collectionPostcode"];
+        destViewController.collectionCity = [aJob objectForKey:@"collectionCity"];
+        
+        destViewController.deliveryAddressLine1 = [aJob objectForKey:@"deliveryAddressLine1"];
+        destViewController.deliveryAddressLine2 = [aJob objectForKey:@"deliveryAddressLine2"];
+        destViewController.deliveryCity = [aJob objectForKey:@"deliveryCity"];
+        destViewController.deliveryPostcode = [aJob objectForKey:@"deliveryPostcode"];
+        
+        destViewController.recipientFirstName = [aJob objectForKey:@"recipientFirstName"];
+        destViewController.recipientLastName = [aJob objectForKey:@"recipientLastName"];
         destViewController.comment = [aJob objectForKey:@"comments"];
                 
     }
