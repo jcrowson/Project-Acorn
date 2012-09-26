@@ -12,14 +12,13 @@
 
 #define METERS_PER_MILE 1609.344
 
-@interface JobDetailController : UIViewController <ZXingDelegate, UITextFieldDelegate> {
+@interface JobDetailController : UIViewController <ZXingDelegate, UITextFieldDelegate, MKMapViewDelegate> {
     
     BOOL doneInitialZoom;
     UITextField *deliveryCodeTextField;
+    MKMapView *mapView;
     
 }
-
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, copy) NSString *qrCodeResult;
 @property (nonatomic, strong) IBOutlet UITextView *deliverToText;

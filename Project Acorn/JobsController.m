@@ -11,6 +11,9 @@
 
 #import "JobsController.h"
 #import "JobTableViewCell.h"
+#import "SVProgressHUD.h"
+#import "KeychainItemWrapper.h"
+
 
 @interface JobsController ()
 
@@ -23,18 +26,51 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
+    
+    //get the username and password from the keychain
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+    
+    //NSString *password = [keychainItem objectForKey:kSecValueData];
+    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
+    
+    if ([username length] != 0) {
+        NSLog(@"username is:%@", username);
+    }
+    
+    else {
         
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+        loginVC.modalPresentationStyle = UIModalPresentationFullScreen;    
+        [self presentModalViewController:loginVC animated:NO];
+        
+        [super viewDidLoad];
+    }
+
+    
+
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     
+
     dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: 
                         kLatestKivaLoansURL];
-        [self performSelectorOnMainThread:@selector(fetchedData:) 
-                               withObject:data waitUntilDone:YES];
+        
+        if (data == nil) {
+            
+            [SVProgressHUD dismiss];  
+            
+        }
+        
+        else {
+            
+            [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                   withObject:data waitUntilDone:YES];
+        }
+        
     });
 
 }
@@ -42,6 +78,8 @@
 
 - (void)fetchedData:(NSData *)responseData {
     
+    //POST vars to jobs db
+        
     //parse out the json data
     NSError* error;
     NSDictionary* json = [NSJSONSerialization 
@@ -56,6 +94,8 @@
     NSLog(@"number of jobs = %i", allJobsCount);
 
     [self.tableView reloadData];
+    
+    [SVProgressHUD dismiss];
 
 }
 

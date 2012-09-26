@@ -21,11 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-}
-
-- (void)fetchedData:(NSData *)responseData {
-
 }
 
 - (void)viewDidUnload
@@ -69,9 +64,16 @@
     
     if ([responseString isEqualToString:@"200"]) {
         
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+
+        //Create a keychain and save the users' name and password
+        [keychainItem setObject:self.passwordField.text forKey:kSecValueData];
+        [keychainItem setObject:self.usernameField.text forKey:kSecAttrAccount];
+        
         //login successful
-        
-        
+        [self dismissModalViewControllerAnimated:YES];
+        [SVProgressHUD showWithStatus:@"Loading Jobs"];
+
     }
     
     else {

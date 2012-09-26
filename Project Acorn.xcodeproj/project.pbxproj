@@ -21,11 +21,12 @@
 		1AC1E5DB16091447004643C4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC1E5DA16091447004643C4 /* AppDelegate.m */; };
 		1AC1E5DE16091447004643C4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AC1E5DC16091447004643C4 /* MainStoryboard.storyboard */; };
 		A46D64781611D92900A69C62 /* PackageLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A46D64771611D92900A69C62 /* PackageLocation.m */; };
-		A49A2B31160B6159009006BF /* JobsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B30160B6159009006BF /* JobsController.m */; };
+		A49A2B31160B6159009006BF /* JobsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B30160B6159009006BF /* JobsController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A49A2B37160B756F009006BF /* JobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B36160B756F009006BF /* JobTableViewCell.m */; };
 		A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A83C66160C6AE500A47843 /* libZXingWidget.a */; };
 		A4A83C701610900800A47843 /* MyDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C6F1610900800A47843 /* MyDetailsController.m */; };
-		A4A83C731610A00500A47843 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C721610A00500A47843 /* LoginController.m */; };
+		A4A83C731610A00500A47843 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C721610A00500A47843 /* LoginController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A4D4FB4B1613360700B282B6 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4FB4A1613360700B282B6 /* KeychainItemWrapper.m */; };
 		A4DD11A11609BBB400DD436A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11A01609BBB400DD436A /* MapKit.framework */; };
 		A4DD11B11609BED500DD436A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11AF1609BED500DD436A /* AddressBook.framework */; };
 		A4DD11B21609BED500DD436A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B01609BED500DD436A /* AddressBookUI.framework */; };
@@ -35,6 +36,10 @@
 		A4DD11BA1609BEEB00DD436A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B91609BEEA00DD436A /* CoreVideo.framework */; };
 		A4DD11BC1609BEF400DD436A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11BB1609BEF400DD436A /* libiconv.dylib */; };
 		A4DD11C51609C60B00DD436A /* JobDetailController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A4DD11C41609C60B00DD436A /* JobDetailController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A4F72C46161309EC0068DA82 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A4F72C43161309EC0068DA82 /* SVProgressHUD.bundle */; };
+		A4F72C47161309EC0068DA82 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F72C45161309EC0068DA82 /* SVProgressHUD.m */; };
+		A4F72C49161309F90068DA82 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F72C48161309F90068DA82 /* QuartzCore.framework */; };
+		A4F72C4B16132DB40068DA82 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F72C4A16132DB40068DA82 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,8 @@
 		A4A83C6F1610900800A47843 /* MyDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailsController.m; sourceTree = "<group>"; };
 		A4A83C711610A00500A47843 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		A4A83C721610A00500A47843 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		A4D4FB491613360700B282B6 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		A4D4FB4A1613360700B282B6 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		A4DD11A01609BBB400DD436A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A4DD11AF1609BED500DD436A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		A4DD11B01609BED500DD436A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -100,6 +107,11 @@
 		A4DD11BB1609BEF400DD436A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		A4DD11C31609C60B00DD436A /* JobDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailController.h; sourceTree = "<group>"; };
 		A4DD11C41609C60B00DD436A /* JobDetailController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JobDetailController.mm; sourceTree = "<group>"; };
+		A4F72C43161309EC0068DA82 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		A4F72C44161309EC0068DA82 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		A4F72C45161309EC0068DA82 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A4F72C48161309F90068DA82 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4F72C4A16132DB40068DA82 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4F72C4B16132DB40068DA82 /* Security.framework in Frameworks */,
+				A4F72C49161309F90068DA82 /* QuartzCore.framework in Frameworks */,
 				A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */,
 				A4DD11BC1609BEF400DD436A /* libiconv.dylib in Frameworks */,
 				A4DD11BA1609BEEB00DD436A /* CoreVideo.framework in Frameworks */,
@@ -147,6 +161,8 @@
 		1AC1E5C916091447004643C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4F72C4A16132DB40068DA82 /* Security.framework */,
+				A4F72C48161309F90068DA82 /* QuartzCore.framework */,
 				A4DD11B91609BEEA00DD436A /* CoreVideo.framework */,
 				A4DD11B71609BEE600DD436A /* CoreMedia.framework */,
 				A4DD11B51609BEE100DD436A /* AVFoundation.framework */,
@@ -168,6 +184,8 @@
 				1AC1E5DC16091447004643C4 /* MainStoryboard.storyboard */,
 				1AC1E5D916091447004643C4 /* AppDelegate.h */,
 				1AC1E5DA16091447004643C4 /* AppDelegate.m */,
+				A4A83C711610A00500A47843 /* LoginController.h */,
+				A4A83C721610A00500A47843 /* LoginController.m */,
 				A4A83C6E1610900800A47843 /* MyDetailsController.h */,
 				A4A83C6F1610900800A47843 /* MyDetailsController.m */,
 				A49A2B2F160B6159009006BF /* JobsController.h */,
@@ -176,8 +194,6 @@
 				A49A2B36160B756F009006BF /* JobTableViewCell.m */,
 				A4DD11C31609C60B00DD436A /* JobDetailController.h */,
 				A4DD11C41609C60B00DD436A /* JobDetailController.mm */,
-				A4A83C711610A00500A47843 /* LoginController.h */,
-				A4A83C721610A00500A47843 /* LoginController.m */,
 				A46D64761611D92900A69C62 /* PackageLocation.h */,
 				A46D64771611D92900A69C62 /* PackageLocation.m */,
 				1AC1E5D116091447004643C4 /* Supporting Files */,
@@ -192,6 +208,8 @@
 				1AC1E5D316091447004643C4 /* InfoPlist.strings */,
 				1AC1E5D616091447004643C4 /* main.m */,
 				1AC1E5D816091447004643C4 /* Project Acorn-Prefix.pch */,
+				A4D4FB491613360700B282B6 /* KeychainItemWrapper.h */,
+				A4D4FB4A1613360700B282B6 /* KeychainItemWrapper.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -229,9 +247,20 @@
 		A4DD11BD1609BFF900DD436A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A4F72C42161309EB0068DA82 /* SVProgressHUD */,
 				A4DD11BB1609BEF400DD436A /* libiconv.dylib */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A4F72C42161309EB0068DA82 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A4F72C43161309EC0068DA82 /* SVProgressHUD.bundle */,
+				A4F72C44161309EC0068DA82 /* SVProgressHUD.h */,
+				A4F72C45161309EC0068DA82 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +346,7 @@
 				1A664E991609221B00DAD755 /* 195-barcode@2x.png in Resources */,
 				1A664E9C1609227B00DAD755 /* 111-user.png in Resources */,
 				1A664E9D1609227B00DAD755 /* 111-user@2x.png in Resources */,
+				A4F72C46161309EC0068DA82 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +365,8 @@
 				A4A83C701610900800A47843 /* MyDetailsController.m in Sources */,
 				A4A83C731610A00500A47843 /* LoginController.m in Sources */,
 				A46D64781611D92900A69C62 /* PackageLocation.m in Sources */,
+				A4F72C47161309EC0068DA82 /* SVProgressHUD.m in Sources */,
+				A4D4FB4B1613360700B282B6 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

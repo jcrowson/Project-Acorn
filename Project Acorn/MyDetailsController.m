@@ -10,6 +10,9 @@
 #define kLatestKivaLoansURL [NSURL URLWithString: @"http://listogra.ph/agent.php"]
 
 #import "MyDetailsController.h"
+#import "SVProgressHUD.h"
+#import "KeychainItemWrapper.h"
+
 
 @interface MyDetailsController ()
 
@@ -36,6 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [SVProgressHUD showWithStatus:@"Loading your Information"];
 
     dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: 
@@ -79,6 +84,8 @@
     self.skypeLabel.text = [agent objectForKey:@"skype"];
     self.skypeVerifiedLabel.text = [agent objectForKey:@"skypeVerified"];
     
+    [SVProgressHUD showSuccessWithStatus:@"Woo!"];
+    
     [self.tableView reloadData];
 }
 
@@ -105,4 +112,15 @@
 
 
 
+- (IBAction)logOutButtonPressed:(id)sender {
+    
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+    [keychainItem resetKeychainItem];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginView"];
+    loginVC.modalPresentationStyle = UIModalPresentationFullScreen;    
+    [self presentModalViewController:loginVC animated:YES];
+
+}
 @end

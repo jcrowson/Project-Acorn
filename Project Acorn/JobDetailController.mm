@@ -21,7 +21,6 @@
 @synthesize jobStatusLabel;
 @synthesize deliveryCodeLabel;
 @synthesize deliveryCodeTextField;
-@synthesize mapView;
 @synthesize qrCodeResult;
 @synthesize geocodeArray;
 @synthesize scanBarcodeButton;
@@ -193,15 +192,15 @@
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     
-    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];                
+    MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion];                
     
-    [self.mapView setRegion:adjustedRegion animated:YES];
+    [mapView setRegion:adjustedRegion animated:YES];
 
     PackageLocation *package = [[PackageLocation alloc] initWithName:self.comment address:nil coordinate:zoomLocation];
     
-    [self.mapView addAnnotation:package];
+    [mapView addAnnotation:package];
     
-    [self.mapView selectAnnotation:package animated:YES];
+    [mapView selectAnnotation:package animated:YES];
     
 }
 
@@ -400,7 +399,6 @@
     [self setJobStatusLabel:nil];
     [self setDeliveryCodeLabel:nil];
     [self setDeliveryCodeTextField:nil];
-    [self setMapView:nil];
     [self setScanBarcodeButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
