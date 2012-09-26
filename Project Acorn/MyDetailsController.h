@@ -25,8 +25,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *mobileVerifiedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *skypeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *skypeVerifiedLabel;
+
 - (IBAction)logOutButtonPressed:(id)sender;
 
 @property (nonatomic, strong) NSArray *agentDetails;
+@property (nonatomic, strong) NSString *username;
 
 @end

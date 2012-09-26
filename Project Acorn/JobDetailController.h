@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZXingWidgetController.h"
 #import <MapKit/MapKit.h>
+#import "ZXingWidgetController.h"
+
 
 #define METERS_PER_MILE 1609.344
 

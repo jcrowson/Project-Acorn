@@ -24,9 +24,11 @@
 		A49A2B31160B6159009006BF /* JobsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B30160B6159009006BF /* JobsController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A49A2B37160B756F009006BF /* JobTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A2B36160B756F009006BF /* JobTableViewCell.m */; };
 		A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A83C66160C6AE500A47843 /* libZXingWidget.a */; };
-		A4A83C701610900800A47843 /* MyDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C6F1610900800A47843 /* MyDetailsController.m */; };
+		A4A83C701610900800A47843 /* MyDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C6F1610900800A47843 /* MyDetailsController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A4A83C731610A00500A47843 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A83C721610A00500A47843 /* LoginController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A4D4FB4B1613360700B282B6 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4FB4A1613360700B282B6 /* KeychainItemWrapper.m */; };
+		A4D4FB4E16135D3A00B282B6 /* Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4FB4D16135D3A00B282B6 /* Agent.m */; };
+		A4D4FB501613610800B282B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D4FB4F1613610800B282B6 /* CoreData.framework */; };
 		A4DD11A11609BBB400DD436A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11A01609BBB400DD436A /* MapKit.framework */; };
 		A4DD11B11609BED500DD436A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11AF1609BED500DD436A /* AddressBook.framework */; };
 		A4DD11B21609BED500DD436A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DD11B01609BED500DD436A /* AddressBookUI.framework */; };
@@ -97,6 +99,9 @@
 		A4A83C721610A00500A47843 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		A4D4FB491613360700B282B6 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		A4D4FB4A1613360700B282B6 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		A4D4FB4C16135D3A00B282B6 /* Agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Agent.h; path = ../Agent.h; sourceTree = "<group>"; };
+		A4D4FB4D16135D3A00B282B6 /* Agent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Agent.m; path = ../Agent.m; sourceTree = "<group>"; };
+		A4D4FB4F1613610800B282B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A4DD11A01609BBB400DD436A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A4DD11AF1609BED500DD436A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		A4DD11B01609BED500DD436A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -119,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4D4FB501613610800B282B6 /* CoreData.framework in Frameworks */,
 				A4F72C4B16132DB40068DA82 /* Security.framework in Frameworks */,
 				A4F72C49161309F90068DA82 /* QuartzCore.framework in Frameworks */,
 				A4A83C6D160C6D1200A47843 /* libZXingWidget.a in Frameworks */,
@@ -161,6 +167,7 @@
 		1AC1E5C916091447004643C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4D4FB4F1613610800B282B6 /* CoreData.framework */,
 				A4F72C4A16132DB40068DA82 /* Security.framework */,
 				A4F72C48161309F90068DA82 /* QuartzCore.framework */,
 				A4DD11B91609BEEA00DD436A /* CoreVideo.framework */,
@@ -196,6 +203,8 @@
 				A4DD11C41609C60B00DD436A /* JobDetailController.mm */,
 				A46D64761611D92900A69C62 /* PackageLocation.h */,
 				A46D64771611D92900A69C62 /* PackageLocation.m */,
+				A4D4FB4C16135D3A00B282B6 /* Agent.h */,
+				A4D4FB4D16135D3A00B282B6 /* Agent.m */,
 				1AC1E5D116091447004643C4 /* Supporting Files */,
 			);
 			path = "Project Acorn";
@@ -367,6 +376,7 @@
 				A46D64781611D92900A69C62 /* PackageLocation.m in Sources */,
 				A4F72C47161309EC0068DA82 /* SVProgressHUD.m in Sources */,
 				A4D4FB4B1613360700B282B6 /* KeychainItemWrapper.m in Sources */,
+				A4D4FB4E16135D3A00B282B6 /* Agent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

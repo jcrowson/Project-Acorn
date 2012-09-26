@@ -13,6 +13,8 @@
 #import "JobTableViewCell.h"
 #import "SVProgressHUD.h"
 #import "KeychainItemWrapper.h"
+#import "JobDetailController.h"
+#import "Agent.h"
 
 
 @interface JobsController ()
@@ -22,19 +24,65 @@
 @implementation JobsController
 
 @synthesize listOfJobs;
+@synthesize username;
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+        
+    [super viewDidLoad];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
     
     //get the username and password from the keychain
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+    self.username = [keychainItem objectForKey:kSecAttrAccount];
     
-    //NSString *password = [keychainItem objectForKey:kSecValueData];
-    NSString *username = [keychainItem objectForKey:kSecAttrAccount];
-    
-    if ([username length] != 0) {
-        NSLog(@"username is:%@", username);
+    if ([self.username length] != 0) {
+        NSLog(@"The username is:%@", self.username);
+        
+        /********************************************
+         * POST to webservice
+         ********************************************/
+        
+        //POST var to web service
+        NSString *post = [NSString stringWithFormat:@"agentUsernameFromPhone=%@", self.username];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://listogra.ph/jobs.php"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:postData];
+        
+        NSURLResponse *response = NULL;
+        NSError *requestError = NULL;
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+        NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@",responseString);
+        
+        
+        dispatch_async(kBgQueue, ^{
+            NSData* data = responseData;
+            
+            if (data == nil) {
+                
+                [SVProgressHUD dismiss];  
+                
+            }
+            
+            else {
+                
+                [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                       withObject:data waitUntilDone:YES];
+            }
+            
+        });
+
     }
     
     else {
@@ -46,33 +94,8 @@
         
         [super viewDidLoad];
     }
-
     
-
     
-}
-
--(void) viewDidAppear:(BOOL)animated {
-    
-
-    dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: 
-                        kLatestKivaLoansURL];
-        
-        if (data == nil) {
-            
-            [SVProgressHUD dismiss];  
-            
-        }
-        
-        else {
-            
-            [self performSelectorOnMainThread:@selector(fetchedData:) 
-                                   withObject:data waitUntilDone:YES];
-        }
-        
-    });
-
 }
 
 

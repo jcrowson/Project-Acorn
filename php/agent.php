@@ -8,12 +8,12 @@ header('Content-Type: text/javascript');
  /********************************************
   * POST vars from iPhone app
  ********************************************/
-//$jobNumber = mysql_escape_string($_POST["jobNumber"]);
+$agentUsernameParam = mysql_escape_string($_POST["agentUsernameFromPhone"]);
 
  /********************************************
   * Find job based on QR code that was scanned
  ********************************************/
-$query = "SELECT * FROM agents WHERE username = 'jcrowson' ";
+$query = "SELECT * FROM agents WHERE username = '{$agentUsernameParam}' ";
 
 $result = mysql_query($query);
 

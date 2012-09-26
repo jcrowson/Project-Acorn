@@ -7,6 +7,11 @@
 //
 
 #import "LoginController.h"
+#import "JobsController.h"
+#import "SVProgressHUD.h"
+#import "KeychainItemWrapper.h"
+#import "Agent.h"
+
 
 @interface LoginController ()
 
@@ -21,6 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+    [keychainItem resetKeychainItem];
+    NSLog(@"username is:%@",[keychainItem objectForKey:kSecAttrAccount]);
+
 }
 
 - (void)viewDidUnload
@@ -64,8 +77,13 @@
     
     if ([responseString isEqualToString:@"200"]) {
         
+               
+        /********************************************
+         * Storing keychain info
+         ********************************************/
+        
         KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
-
+        
         //Create a keychain and save the users' name and password
         [keychainItem setObject:self.passwordField.text forKey:kSecValueData];
         [keychainItem setObject:self.usernameField.text forKey:kSecAttrAccount];

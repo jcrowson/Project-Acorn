@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JobsController.h"
-#import "SVProgressHUD.h"
-#import "KeychainItemWrapper.h"
+
 
 @interface LoginController : UIViewController
 

@@ -12,6 +12,8 @@
 #import "QRCodeReader.h"
 #import "PackageLocation.h"
 
+
+
 @interface JobDetailController ()
 
 @end

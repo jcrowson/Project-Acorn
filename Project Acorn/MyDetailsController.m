@@ -35,19 +35,58 @@
 @synthesize skypeVerifiedLabel;
 @synthesize agentDetails;
 
+@synthesize username;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [SVProgressHUD showWithStatus:@"Loading your Information"];
+    }
 
-    dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: 
-                        kLatestKivaLoansURL];
-        [self performSelectorOnMainThread:@selector(fetchedData:) 
-                               withObject:data waitUntilDone:YES];
-    });
+-(void) viewDidAppear:(BOOL)animated {
+    
+    //get the username and password from the keychain
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+    self.username = [keychainItem objectForKey:kSecAttrAccount];
+    
+    if ([self.username length] != 0) {
+        NSLog(@"The username is:%@", self.username);
+        
+        /********************************************
+         * POST to webservice
+         ********************************************/
+        
+        //get the username and password from the keychain
+        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+        self.username = [keychainItem objectForKey:kSecAttrAccount];
+        
+        //POST var to web service
+        NSString *post = [NSString stringWithFormat:@"agentUsernameFromPhone=%@", self.username];
+        
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://listogra.ph/agent.php"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:postData];
+        
+        NSURLResponse *response = NULL;
+        NSError *requestError = NULL;
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+        
+        [SVProgressHUD showWithStatus:@"Loading your Information"];
+        
+        dispatch_async(kBgQueue, ^{
+            NSData* data = responseData;
+            [self performSelectorOnMainThread:@selector(fetchedData:) 
+                                   withObject:data waitUntilDone:YES];
+        });
+
+    }
 }
 
 - (void)fetchedData:(NSData *)responseData {
@@ -115,6 +154,7 @@
 - (IBAction)logOutButtonPressed:(id)sender {
     
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
+    
     [keychainItem resetKeychainItem];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];

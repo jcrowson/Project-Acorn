@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JobDetailController.h"
 
 @interface JobsController : UITableViewController 
     
 
 @property (nonatomic, strong) NSMutableArray *listOfJobs;
+@property (nonatomic, strong) NSString *username;
 
 
 @end
