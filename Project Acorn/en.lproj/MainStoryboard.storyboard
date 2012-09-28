@@ -9,7 +9,7 @@
         <scene sceneID="oIa-8T-yKV">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZJ-fP-Djp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Rgf-Dt-dQP" customClass="JobsController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="myJobsView" id="Rgf-Dt-dQP" customClass="JobsController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="114" sectionHeaderHeight="22" sectionFooterHeight="22" id="bVn-yw-ks0">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" title="My Jobs" id="zWy-3X-Sjp"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1715" y="233"/>
+            <point key="canvasLocation" x="1792" y="-107"/>
         </scene>
         <!--Job Detail Controller-->
         <scene sceneID="D2O-tv-aog">
@@ -175,7 +175,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2138" y="233"/>
+            <point key="canvasLocation" x="2215" y="-107"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="dGx-Ch-SiW">
@@ -246,7 +246,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1246" y="233"/>
+            <point key="canvasLocation" x="1258" y="-107"/>
         </scene>
         <!--My Details Controller - My Account-->
         <scene sceneID="Fqs-4M-XWr">
@@ -526,7 +526,38 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1715" y="817"/>
+            <point key="canvasLocation" x="1792" y="489"/>
+        </scene>
+        <!--Navigation Controller - Find Jobs-->
+        <scene sceneID="mHy-5w-81c">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lAM-ga-bcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="Hcn-9i-xuX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Find Jobs" image="15-tags.png" id="ySu-iZ-hBU"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Ydq-P1-A3k">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="l4Y-8q-hIR" kind="relationship" relationship="rootViewController" id="A6q-V2-NLP"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1258" y="1087"/>
+        </scene>
+        <!--Find Jobs Controller - Jobs-->
+        <scene sceneID="bix-d8-97a">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkT-QB-XzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="l4Y-8q-hIR" customClass="FindJobsController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JM7-Pb-HiF">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Jobs" id="nea-u5-ffr"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1792" y="1081"/>
         </scene>
         <!--Navigation Controller - My Account-->
         <scene sceneID="V7N-lp-fOI">
@@ -542,7 +573,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1246" y="817"/>
+            <point key="canvasLocation" x="1258" y="489"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Pav-1F-HU1">
@@ -558,6 +589,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="wWO-uX-xeF" kind="relationship" relationship="viewControllers" id="ciu-Nj-9wL"/>
+                        <segue destination="Hcn-9i-xuX" kind="relationship" relationship="viewControllers" id="pJl-MV-H4p"/>
                         <segue destination="33i-6h-5OH" kind="relationship" relationship="viewControllers" id="t2W-qf-cxp"/>
                     </connections>
                 </tabBarController>
@@ -567,9 +599,13 @@
     </scenes>
     <resources>
         <image name="111-user.png" width="24" height="21"/>
+        <image name="15-tags.png" width="24" height="25"/>
         <image name="195-barcode.png" width="24" height="18"/>
     </resources>
     <classes>
+        <class className="FindJobsController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FindJobsController.h"/>
+        </class>
         <class className="JobDetailController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/JobDetailController.h"/>
             <relationships>

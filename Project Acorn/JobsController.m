@@ -14,7 +14,6 @@
 #import "SVProgressHUD.h"
 #import "KeychainItemWrapper.h"
 #import "JobDetailController.h"
-#import "Agent.h"
 
 
 @interface JobsController ()
@@ -30,9 +29,12 @@
 - (void)viewDidLoad {
         
     [super viewDidLoad];
+
 }
 
 -(void) viewDidAppear:(BOOL)animated {
+    
+        [SVProgressHUD show];
     
     //get the username and password from the keychain
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
@@ -100,7 +102,7 @@
 
 
 - (void)fetchedData:(NSData *)responseData {
-    
+        
     //POST vars to jobs db
         
     //parse out the json data
@@ -112,9 +114,6 @@
                           error:&error];
     
     self.listOfJobs = [json objectForKey:@"jobs"];
-       
-    int allJobsCount = [self.listOfJobs count];
-    NSLog(@"number of jobs = %i", allJobsCount);
 
     [self.tableView reloadData];
     
@@ -203,5 +202,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
 
 @end

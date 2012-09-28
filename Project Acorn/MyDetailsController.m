@@ -51,16 +51,13 @@
     self.username = [keychainItem objectForKey:kSecAttrAccount];
     
     if ([self.username length] != 0) {
+        
         NSLog(@"The username is:%@", self.username);
         
         /********************************************
          * POST to webservice
          ********************************************/
-        
-        //get the username and password from the keychain
-        KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"RunjoLoginKey" accessGroup:nil];
-        self.username = [keychainItem objectForKey:kSecAttrAccount];
-        
+            
         //POST var to web service
         NSString *post = [NSString stringWithFormat:@"agentUsernameFromPhone=%@", self.username];
         
@@ -77,9 +74,7 @@
         NSURLResponse *response = NULL;
         NSError *requestError = NULL;
         NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
-        
-        [SVProgressHUD showWithStatus:@"Loading your Information"];
-        
+                
         dispatch_async(kBgQueue, ^{
             NSData* data = responseData;
             [self performSelectorOnMainThread:@selector(fetchedData:) 
@@ -122,9 +117,7 @@
     self.mobileVerifiedLabel.text = [agent objectForKey:@"mobileVerified"];
     self.skypeLabel.text = [agent objectForKey:@"skype"];
     self.skypeVerifiedLabel.text = [agent objectForKey:@"skypeVerified"];
-    
-    [SVProgressHUD showSuccessWithStatus:@"Woo!"];
-    
+        
     [self.tableView reloadData];
 }
 
@@ -157,10 +150,20 @@
     
     [keychainItem resetKeychainItem];
     
+    [self performSelector:@selector(changeTabBarToInitialTab) withObject:self afterDelay:1];
+    
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
     UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginView"];
     loginVC.modalPresentationStyle = UIModalPresentationFullScreen;    
     [self presentModalViewController:loginVC animated:YES];
 
 }
+
+-(void)changeTabBarToInitialTab {
+    
+        [self.tabBarController setSelectedIndex:0];
+}
+
 @end

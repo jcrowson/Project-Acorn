@@ -10,7 +10,6 @@
 #import "JobsController.h"
 #import "SVProgressHUD.h"
 #import "KeychainItemWrapper.h"
-#import "Agent.h"
 
 
 @interface LoginController ()
@@ -18,6 +17,7 @@
 @end
 
 @implementation LoginController
+
 @synthesize usernameField;
 @synthesize passwordField;
 @synthesize loginButton;
@@ -77,7 +77,6 @@
     
     if ([responseString isEqualToString:@"200"]) {
         
-               
         /********************************************
          * Storing keychain info
          ********************************************/
